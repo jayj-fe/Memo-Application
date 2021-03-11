@@ -27,6 +27,7 @@ export default {
   },
   created(){
     this.memos = localStorage.memos ? JSON.parse(localStorage.memos) : [];
+    this.$emit('change', this.memos.length);
   },
   methods : {
     addMemo(payload){
@@ -37,6 +38,8 @@ export default {
     storeMemo(){
       const memoToStoring = JSON.stringify(this.memos);
       localStorage.setItem('memos', memoToStoring);
+
+      this.$emit('change', this.memos.length);
     },
     deleteMemo(id){
       const targetIndex = this.memos.findIndex( e => e.id === id );
