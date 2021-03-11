@@ -15,11 +15,19 @@ export default {
   props : {
     memoItem : {
       type : Object
+    },
+    editingId : {
+      type : Number
     }
   },
-  data(){
-    return {
-      isEditing : false
+  // data(){
+  //   return {
+  //     isEditing : false
+  //   }
+  // },
+  computed: {
+    isEditing (){
+      return this.memoItem.id === this.editingId;
     }
   },
   methods : {
@@ -29,15 +37,17 @@ export default {
     },
 
     handleDblClick(){
-      this.isEditing = true;
+      // this.isEditing = true;
 
+      this.$emit('setEditingId', this.memoItem.id)
       this.$nextTick(() => {
         this.$refs.content.focus();
       });
     },
 
     handleBlur(){
-      this.isEditing = false;
+      // this.isEditing = false;
+      this.$emit('resetEditingId');
     },
 
     updateMemo(e){
@@ -49,7 +59,8 @@ export default {
       }
 
       this.$emit('updateMemo', {id, content});
-      this.isEditing = false;
+      // this.isEditing = false;
+      this.$refs.content.blur();
     }
   }
 }
