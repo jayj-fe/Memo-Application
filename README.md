@@ -12,7 +12,7 @@ Vue.js로 만들었으며, Vuex 와 RESTful API를 적용하였습니다.
 - 메모 삭제
 - 메모 갯수 카운팅
 > 수정 : 저장된 메모에서 내용 더블클릭<br>
-> 저장 : Enter Key.
+> 수정한 사항 저장 : Enter Key.
 
 <br>
 
